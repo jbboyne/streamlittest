@@ -29,13 +29,15 @@ for country in countries:
     current_df = current_df[stats]
 #     st.line_chart(current_df)
     
-    line_chart = alt.Chart(current_df).mark_line().encode(
-        alt.X('NumDays', title='Days'),
-        alt.Y(stats, title='Cumulative Count'),
-        color='category:N'
-    ).properties(
-        title='title'
-    )
+#     line_chart = alt.Chart(current_df).mark_line().encode(
+#         alt.X('NumDays', title='Days'),
+#         alt.Y(stats, title='Cumulative Count'),
+#         color='category:N'
+#     ).properties(
+#         title='title'
+#     )
+
+    line_chart = alt.Chart(current_df).mark_line()
 
     st.altair_chart(line_chart)
 
