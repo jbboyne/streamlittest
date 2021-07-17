@@ -30,8 +30,8 @@ for country in countries:
 #     st.line_chart(current_df)
     
     line_chart = alt.Chart(current_df).mark_line(interpolate='basis').encode(
-        alt.X('x', title='Days'),
-        alt.Y('y', title='Cumulative Count'),
+        alt.X('NumDays', title='Days'),
+        alt.Y(stats, title='Cumulative Count'),
         color='category:N'
     ).properties(
         title='title'
