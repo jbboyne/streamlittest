@@ -1,0 +1,25 @@
+import streamlit as st
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
+df = pd.read_csv(url)
+
+st.title("COVID-19 Global Cases Time Series")
+
+countries = st.sidebar.multiselect(
+    "Select Countries",
+    df['Country'].unique()
+    )
+
+statlist = df.columns.drop(['Date', 'Country'])
+stats = st.sidebar.selectbox("Select stat", statlist)
+
+
+df_subset = df.loc[lambda d: d['Country'].isin(countries)]
+
+for country in countries:
+    current_df = df_subset.loc[lambda d: d['Country'] == country]
+    current_df = current_df[stats]
+    st.line_chart(current_df)
+
+
