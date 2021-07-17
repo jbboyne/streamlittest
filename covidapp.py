@@ -34,7 +34,7 @@ for country in countries:
         alt.Y('y', title='Cumulative Count'),
         color='category:N'
     ).properties(
-        title='COVID-19 ' + stats
+        title='title'
     )
 
     st.altair_chart(line_chart)
