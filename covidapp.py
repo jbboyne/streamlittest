@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
@@ -26,6 +27,15 @@ df_subset = df_subset[df_subset['NumDays'] <= numdays]
 for country in countries:
     current_df = df_subset.loc[lambda d: d['Country'] == country]
     current_df = current_df[stats]
-    st.line_chart(current_df)
+#     st.line_chart(current_df)
+    
+    line_chart = alt.Chart(current_df).mark_line(interpolate='basis').encode(
+        alt.X('x', title='Days'),
+        alt.Y('y', title='Cumulative Count'),
+        color='category:N'
+    ).properties(
+        title='COVID-19 ' + stats
+    )
 
+    st.altair_chart(line_chart)
 
