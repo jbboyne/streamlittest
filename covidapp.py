@@ -31,20 +31,20 @@ for country in countries:
     current_df = df_subset.loc[lambda d: d['Country'] == country]
     current_df = current_df.drop(columns = dropstats)
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
-    current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats)
+    current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
     
     st.write(current_df.head())
-    st.line_chart(current_df)
+#     st.line_chart(current_df)
     
-#     line_chart = alt.Chart(current_df).mark_line().encode(
-#         x= 'Date',
-#         y = 'Count',
-#         color='Measure'
-#     ).properties(
-#         title='title'
-#     )
+    line_chart = alt.Chart(current_df).mark_line().encode(
+        x= 'Date',
+        y = 'Count',
+        color='Measure'
+    ).properties(
+        title='title'
+    )
 
-#     line_chart = alt.Chart(current_df).mark_line()
+    line_chart = alt.Chart(current_df).mark_line()
 
-#     st.altair_chart(line_chart)
+    st.altair_chart(line_chart)
 
