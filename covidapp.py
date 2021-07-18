@@ -24,7 +24,7 @@ dropstats = statlist.drop(stats)
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 # df_subset = df_subset.rolling(7, method = 'table', min_periods = 7).apply(mean, raw = True, engine = 'numba')
-df_dates = pd.DataFrame.df_subset['Date']
+df_dates = pd.DataFrame(df_subset['Date'])
 df_subset = df_subset.rolling(window = 7).mean()
 
 st.write(df_subset.tail())
