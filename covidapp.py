@@ -23,7 +23,7 @@ stats = st.sidebar.multiselect("Select stat", statlist)
 dropstats = statlist.drop(stats)
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
-df_subset = df_subset(7, method = 'table', min_periods = 7).apply(mean, raw = True, engine = 'numba')
+df_subset = df_subset.rolling(7, method = 'table', min_periods = 7).apply(mean, raw = True, engine = 'numba')
 
 
 for country in countries:
