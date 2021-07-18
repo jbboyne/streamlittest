@@ -38,7 +38,7 @@ for country in countries:
     current_df = current_df.resample('7D', on = 'Date').last()
 # #     current_df = pd.DataFrame(ts.mean())
     
-#     st.write(current_df)
+    st.write(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
 #         x = 'Date',
