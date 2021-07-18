@@ -20,6 +20,8 @@ countries = st.sidebar.multiselect(
 
 statlist = df.columns.drop(['Date', 'Country', 'NumDays'])
 stats = st.sidebar.multiselect("Select stat", statlist)
+dropstats = statlist.drop(stats)
+st.write(dropstats)
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 # df_subset = df_subset[df_subset['NumDays'] <= numdays]
@@ -28,7 +30,7 @@ df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 for country in countries:
     st.write(country)
     current_df = df_subset.loc[lambda d: d['Country'] == country]
-    current_df = current_df[stats].reindex().merge(current_df['Date'].reindex())
+    current_df = current_df[stats]
     st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
