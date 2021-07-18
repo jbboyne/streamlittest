@@ -39,5 +39,5 @@ for country in countries:
 
     line_chart = alt.Chart(current_df).mark_line()
 
-    st.altair_chart(line_chart)
+#     st.altair_chart(line_chart)
 
