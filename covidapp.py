@@ -10,7 +10,6 @@ df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
 df['NumDays'] = df['NumDays'].astype(int)
 
 df['Date'] = pd.to_datetime(df['Date'])
-df['Date'] = df['Date'].apply(lambda x: x.date())
 
 st.title("COVID-19 Global Cases Time Series")
 
@@ -37,7 +36,7 @@ for country in countries:
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
     st.write(current_df)
     current_df = current_df.resample('7D', on = 'Date').last()
-#     current_df = pd.DataFrame(ts.mean())
+    current_df['Date'] = current_df['Date'].apply(lambda x: x.date())
     
     st.write(current_df)
     
