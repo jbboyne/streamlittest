@@ -24,10 +24,11 @@ stats = st.sidebar.multiselect("Select stat", statlist)
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_subset = df_subset[df_subset['NumDays'] <= numdays]
 
+
 for country in countries:
     st.write(country)
     current_df = df_subset.loc[lambda d: d['Country'] == country]
-#     current_df = current_df[stats]
+    current_df = current_df[stats]
     st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
