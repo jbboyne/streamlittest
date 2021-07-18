@@ -28,8 +28,8 @@ df_dates = df_subset[['Date', 'Country']]
 df_subset = df_subset.rolling(window = 7).mean()
 df_subset = df_subset.join(df_dates)
 
-# for country in countries:
-#     st.write(country)
+for country in countries:
+    st.write(country)
 #     current_df = df_subset.loc[lambda d: d['Country'] == country]
 #     current_df = current_df.drop(columns = dropstats)
 #     current_df = current_df.drop(columns = ['NumDays', 'Country'])
