@@ -26,6 +26,7 @@ df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset[['Date', 'Country']]
 df_subset = df_subset.rolling(window = 7).mean()
 df_subset = df_subset.join(df_dates)
+df_subset = df_subset.resample('7D', on = 'Date').last()
 
 for country in countries:
     st.write(country)
@@ -33,8 +34,7 @@ for country in countries:
     current_df = current_df.drop(columns = dropstats)
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
-    st.write(current_df)
-    current_df = current_df.resample('7D', on = 'Date').last()
+        
     st.write(current_df)
     
     line_chart = alt.Chart(current_df).mark_line().encode(
