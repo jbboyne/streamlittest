@@ -35,8 +35,6 @@ for country in countries:
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
     st.write(current_df)
     current_df = current_df.resample('7D', on = 'Date').last()
-# #     current_df = pd.DataFrame(ts.mean())
-    
     st.write(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
