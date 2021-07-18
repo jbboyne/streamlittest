@@ -26,7 +26,7 @@ df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 # # df_subset = df_subset.rolling(7, method = 'table', min_periods = 7).apply(mean, raw = True, engine = 'numba')
 df_dates = df_subset[['Date', 'Country']]
 df_subset = df_subset.rolling(window = 7).mean()
-# df_subset = df_subset.join(df_dates)
+df_subset = df_subset.join(df_dates)
 
 # for country in countries:
 #     st.write(country)
