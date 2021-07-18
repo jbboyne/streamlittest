@@ -32,6 +32,7 @@ df_subset = df_subset.resample('7D', on = 'Date').last()
 for country in countries:
     st.write(country)
     st.write(df_subset)
+    st.write(df_subset['Country'].unique())
     current_df = df_subset.loc[lambda d: d['Country'] == country]
     current_df = current_df.drop(columns = dropstats)
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
