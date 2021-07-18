@@ -21,7 +21,6 @@ countries = st.sidebar.multiselect(
 statlist = df.columns.drop(['Date', 'Country', 'NumDays'])
 stats = st.sidebar.multiselect("Select stat", statlist)
 dropstats = statlist.drop(stats)
-st.write(dropstats)
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 # df_subset = df_subset[df_subset['NumDays'] <= numdays]
