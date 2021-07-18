@@ -28,10 +28,6 @@ df_dates = pd.DataFrame(df_subset['Date'])
 df_subset = df_subset.rolling(window = 7).mean()
 df_subset = df_subset.join(df_dates)
 
-st.write(df_subset.tail())
-st.write(df_dates.tail())
-
-
 for country in countries:
     st.write(country)
     current_df = df_subset.loc[lambda d: d['Country'] == country]
@@ -41,7 +37,7 @@ for country in countries:
     ts = current_df.resample('7D',on = 'Date')
 #     current_df = pd.DataFrame(ts.mean())
     
-    st.write(ts.mean())
+#     st.write(ts.mean())
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
 #         x = 'Date',
