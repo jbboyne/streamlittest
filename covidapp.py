@@ -32,9 +32,9 @@ for country in countries:
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
     ts = current_df.resample('7D',on = 'Date')
-    current_df = pd.DataFrame(ts.mean())
+#     current_df = pd.DataFrame(ts.mean())
     
-    st.write(type(current_df))
+    st.write(ts.mean())
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
 #         x = 'Date',
