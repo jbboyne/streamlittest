@@ -28,7 +28,7 @@ df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 for country in countries:
     st.write(country)
     current_df = df_subset.loc[lambda d: d['Country'] == country]
-    current_df = current_df['Date', stats]
+    current_df = current_df[stats].merge(current_df['Date'])
     st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
