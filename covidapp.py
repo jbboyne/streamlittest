@@ -30,7 +30,7 @@ df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 for country in countries:
     st.write(country)
     current_df = df_subset.loc[lambda d: d['Country'] == country]
-    current_df = current_df[stats]
+    current_df = current_df.drop(dropstats)
     st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
