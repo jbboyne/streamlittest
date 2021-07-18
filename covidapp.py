@@ -36,7 +36,7 @@ for country in countries:
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
     st.write(current_df)
     current_df = current_df.resample('7D', on = 'Date').last()
-    current_df['Date'] = current_df['Date'].apply(lambda x: x.date())
+#     current_df['Date'] = current_df['Date'].apply(lambda x: x.date())
     
     st.write(current_df)
     
