@@ -5,9 +5,9 @@ import altair as alt
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
 
-df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
-df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
-df['NumDays'] = df['NumDays'].astype(int)
+# df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
+# df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
+# df['NumDays'] = df['NumDays'].astype(int)
 
 st.title("COVID-19 Global Cases Time Series")
 
@@ -31,17 +31,18 @@ for country in countries:
     current_df = df_subset.loc[lambda d: d['Country'] == country]
     current_df = current_df.drop(columns = dropstats)
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
-    st.line_chart(current_df)
+    pd.melt(current_df, id_vars = ['Date'], value_vars = stats
+#     st.line_chart(current_df)
     
-#     line_chart = alt.Chart(current_df).mark_line().encode(
-#         alt.X('NumDays', title='Days'),
-#         alt.Y(stats, title='Cumulative Count'),
-#         color='category:N'
-#     ).properties(
-#         title='title'
-#     )
+    line_chart = alt.Chart(current_df).mark_line().encode(
+        x= 'Date',
+        y = 'Count',
+        color='Measure'
+    ).properties(
+        title='title'
+    )
 
-#     line_chart = alt.Chart(current_df).mark_line()
+    line_chart = alt.Chart(current_df).mark_line()
 
-#     st.altair_chart(line_chart)
+    st.altair_chart(line_chart)
 
