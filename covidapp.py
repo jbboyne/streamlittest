@@ -32,6 +32,7 @@ for country in countries:
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
     current_df = current_df.resample('7D',on = 'Date')
+    current_df = pd.DataFrame(current_df)
     
     st.write(type(current_df))
     
