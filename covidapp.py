@@ -24,7 +24,7 @@ dropstats = statlist.drop(stats)
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset[['Date', 'Country']]
-# df_subset = df_subset.rolling(window = 7).mean()
+df_subset = df_subset.rolling(window = 7).mean()
 # df_subset = df_subset.join(df_dates, lsuffix = 'l', rsuffix = 'r')
 # df_subset = df_subset.resample('7D', on = 'Date').last()
 # st.write(df_subset['Country'].unique())
