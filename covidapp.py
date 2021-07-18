@@ -30,8 +30,7 @@ for country in countries:
     st.write(country)
     current_df = df_subset.loc[lambda d: d['Country'] == country]
     current_df = current_df[stats]
-    st.write(current_df.columns)
-#     current_df = current_df.columns.drop(['Country', 'NumDays'])
+    current_df = current_df.columns.drop('NumDays')
     st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
