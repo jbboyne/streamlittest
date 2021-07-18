@@ -28,7 +28,7 @@ df_dates = pd.DataFrame(df_subset['Date'])
 df_subset = df_subset.rolling(window = 7).mean()
 
 st.write(df_subset.tail())
-st_write(df_dates.tail())
+st.write(df_dates.tail())
 
 
 for country in countries:
