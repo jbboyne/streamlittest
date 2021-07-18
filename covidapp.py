@@ -34,7 +34,7 @@ for country in countries:
     current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats)
     
     st.write(current_df.head())
-#     st.line_chart(current_df)
+    st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
 #         x= 'Date',
