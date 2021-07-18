@@ -27,7 +27,7 @@ df_subset = df_subset[df_subset['NumDays'] <= numdays]
 for country in countries:
     current_df = df_subset.loc[lambda d: d['Country'] == country]
     current_df = current_df[stats]
-#     st.line_chart(current_df)
+    st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
 #         alt.X('NumDays', title='Days'),
@@ -37,7 +37,7 @@ for country in countries:
 #         title='title'
 #     )
 
-    line_chart = alt.Chart(current_df).mark_line()
+#     line_chart = alt.Chart(current_df).mark_line()
 
 #     st.altair_chart(line_chart)
 
