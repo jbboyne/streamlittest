@@ -32,7 +32,8 @@ for country in countries:
     current_df = current_df.drop(columns = dropstats)
     current_df = current_df.drop(columns = ['NumDays', 'Country'])
     pd.melt(current_df, id_vars = ['Date'], value_vars = stats)
-    st.line_chart(current_df)
+    st.write(current_df.head())
+#     st.line_chart(current_df)
     
 #     line_chart = alt.Chart(current_df).mark_line().encode(
 #         x= 'Date',
