@@ -23,7 +23,7 @@ statlist = df.columns.drop(['Date', 'Country', 'NumDays'])
 stats = st.sidebar.multiselect("Select stat", statlist)
 dropstats = statlist.drop(stats)
 
-st.sidebar.select("Chart Type", ("Compare countries by each measure", "Compare measures for each country"))
+st.sidebar.select("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset['Date']
