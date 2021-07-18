@@ -11,7 +11,8 @@ df['NumDays'] = df['NumDays'].astype(int)
 
 df['Date'] = pd.to_datetime(df['Date'])
 
-st.title("COVID-19 Global Cases Time Series")
+st.title("COVID-19 Global Time Series")
+st.write("Select a country or countries and measures from the panel at the left."
 
 countries = st.sidebar.multiselect(
     "Select Countries",
