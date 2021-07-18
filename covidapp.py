@@ -23,7 +23,7 @@ statlist = df.columns.drop(['Date', 'Country', 'NumDays'])
 stats = st.sidebar.multiselect("Select stat", statlist)
 dropstats = statlist.drop(stats)
 
-st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
+type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset['Date']
@@ -33,21 +33,24 @@ df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on =
 # st.write(df_subset['Country'].unique())
 
 
-for country in countries:
-    st.write(country)
-    current_df = df_subset.loc[lambda d: d['Country'] == country]
-    current_df = current_df.drop(columns = dropstats)
-    current_df = current_df.drop(columns = ['NumDays', 'Country'])
-    current_df = pd.melt(current_df, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
-    
-    line_chart = alt.Chart(current_df).mark_line().encode(
-        x = 'Date',
-        y = 'Count',
-        color='Measure',
-        strokeDash = 'Measure'
-    ).properties(
-        title='title'
-    )
+if type == "Compare measures for each country":
+    for country in countries:
+        st.write(country)
+        current_df = df_subset.loc[lambda d: d['Country'] == country]
+        current_df = current_df.drop(columns = dropstats)
+        current_df = current_df.drop(columns = ['NumDays', 'Country'])
+        current_df = pd.melt(current_df, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
 
-    st.altair_chart(line_chart)
+        line_chart = alt.Chart(current_df).mark_line().encode(
+            x = 'Date',
+            y = 'Count',
+            color='Measure',
+            strokeDash = 'Measure'
+        ).properties(
+            title='title'
+        )
 
+        st.altair_chart(line_chart)
+        
+else:
+    st.write("Compare countries by each measure")
