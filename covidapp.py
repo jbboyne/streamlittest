@@ -9,7 +9,8 @@ df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
 df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
 df['NumDays'] = df['NumDays'].astype(int)
 
-st.write(type(df['Date'][1]))
+df['Date'] = df['Date'].to_datetime
+st.write(type(df['Date'][1])
 
 st.title("COVID-19 Global Cases Time Series")
 
