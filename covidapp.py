@@ -37,14 +37,14 @@ for country in countries:
     current_df = current_df.resample('7D', on = 'Date').last()
     st.write(current_df)
     
-#     line_chart = alt.Chart(current_df).mark_line().encode(
-#         x = 'Date',
-#         y = 'Count',
-#         color='Measure',
-#         strokeDash = 'Measure'
-#     ).properties(
-#         title='title'
-#     )
+    line_chart = alt.Chart(current_df).mark_line().encode(
+        x = 'Date',
+        y = 'Count',
+        color='Measure',
+        strokeDash = 'Measure'
+    ).properties(
+        title='title'
+    )
 
-#     st.altair_chart(line_chart)
+    st.altair_chart(line_chart)
 
