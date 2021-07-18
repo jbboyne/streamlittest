@@ -19,7 +19,7 @@ countries = st.sidebar.multiselect(
 numdays = st.sidebar.slider("Dates", min_value = min(df['NumDays']), max_value = max(df['NumDays']), step=1)
 
 statlist = df.columns.drop(['Date', 'Country', 'NumDays'])
-stats = st.sidebar.selectbox("Select stat", statlist)
+stats = st.sidebar.multiselect("Select stat", statlist)
 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_subset = df_subset[df_subset['NumDays'] <= numdays]
