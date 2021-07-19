@@ -53,6 +53,10 @@ df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7)
 df_subset = df_subset.join(df_dates)
 df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on = 'Date').last()
 
+if norm == "Per Capita (normalized)":
+        yaxis = 'Per Capita'
+else: yaxis = 'Count'
+
 if type == "Compare measures for each country":
     for country in countries:
         st.write(country)
@@ -62,10 +66,12 @@ if type == "Compare measures for each country":
         current_df = current_df.drop(columns = ['NumDays', 'Country'])
         current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
         current_df['Per Capita'] = (current_df['Count']/popn) * 100000
+        
+
 
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
-            y = 'Per Capita',
+            y = yaxis,
             color='Measure',
             strokeDash = 'Measure')
         st.altair_chart(line_chart)
@@ -80,7 +86,7 @@ else:
         
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
-            y = 'Per Capita',
+            y = yaxis,
             color = 'Country', 
             strokeDash = 'Country')
         st.altair_chart(line_chart)
