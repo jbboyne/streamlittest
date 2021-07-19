@@ -48,6 +48,7 @@ type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset['Date']
 df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7).mean()
+st.write(df_subset)
 df_subset = df_subset.join(df_dates)
 df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on = 'Date').last()
 
@@ -58,7 +59,7 @@ if type == "Compare measures for each country":
         current_df = current_df.drop(columns = dropstats)
         current_df = current_df.drop(columns = ['NumDays', 'Country'])
         current_df = pd.melt(current_df, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
-        st.write(current_df)
+#         st.write(current_df)
 
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
