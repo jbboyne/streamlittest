@@ -41,11 +41,11 @@ if type == "Compare measures for each country":
 
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
-            y = 'Count',
+            y = 'Cumulative Count',
             color='Measure',
             strokeDash = 'Measure'
         ).properties(
-            title='title'
+#             title='title'
         )
 
         st.altair_chart(line_chart)
@@ -58,11 +58,11 @@ else:
         
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
-            y = 'Count',
+            y = 'Cumulative Count',
             color = 'Country', 
             strokeDash = 'Country'
         ).properties(
-            title = 'title'
+#             title = 'title'
         )
         
         st.altair_chart(line_chart)
