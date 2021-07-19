@@ -83,7 +83,11 @@ if type == "Compare measures for each country":
         
 else:
     this_df = pd.melt(df_subset, id_vars = ['Date', 'Country', 'Population (2020)'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
- 
+    if countries == []:
+        countries = ['US', 'Canada', 'Mexico']
+        
+    if stats == []:
+        stats = ['Deaths', 'Confirmed Cases']
     for stat in stats:
         st.write(stat)
         current_df = this_df.loc[lambda d: d['Measure'] == stat]
