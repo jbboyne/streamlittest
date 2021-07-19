@@ -51,7 +51,7 @@ if countries == []:
         countries = ['US', 'Canada', 'Mexico']
         
 if stats == []:
-        stats = ['Death', 'Confirmed Cases']
+        stats = ['Deaths', 'Confirmed Cases']
 
 #Apply widget selections to covid dataset
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
