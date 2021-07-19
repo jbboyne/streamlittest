@@ -15,7 +15,7 @@ pop = pop.rename(columns={'Country (or dependency)': 'Country'})
 #dictionary for renaming population data to match covid country names
 dict = {'Myanmar': 'Burma', 'Côte d\'Ivoire':'Cote d\'Ivoire', 'South Korea': 'Korea, South',
         'Saint Kitts & Nevis': 'Saint Kitts and Nevis', 'St. Vincent & Grenadines': 'Saint Vincent and the Grenadines',
-        'United States': 'US', 'Czech Republic (Czechia)': 'Czechia', 'DR Congo': 'Congo (Kinshasa)'}
+        'United States': 'US', 'Czech Republic (Czechia)': 'Czechia', 'DR Congo': 'Congo (Kinshasa)', 'Congo': 'Congo (Brazzaville)'}
 
 pop['Country'] = pop['Country'].replace(dict)
 
