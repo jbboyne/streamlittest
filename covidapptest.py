@@ -47,6 +47,9 @@ type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", 
 
 norm = st.sidebar.selectbox("Normalization", ["Per Capita (normalized)", "Count (not normalized)"])
 
+if countries == []:
+        countries = ['US', 'Canada', 'Mexico']
+
 #Apply widget selections to covid dataset
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset['Date']
