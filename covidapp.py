@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-import csv
-import requests
-from bs4 import BeautifulSoup
 
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
