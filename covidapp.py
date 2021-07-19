@@ -8,8 +8,17 @@ df = pd.read_csv(url)
 
 #Get country population data
 url2 = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQWDB7LlBd2xZivtvv4T_Wh7Bmqh79Ed6CWAZnyMB23-Q-yHpGGew9_0OLV2xWqVXDywBV07FFe7YhL/pub?gid=1075357968&single=true&output=csv"
-df_pop = pd.read_csv(url2)
+pop = pd.read_csv(url2)
+pop = pop.rename(columns={'Country (or dependency)': 'Country'})
 
+#dictionary for renaming population data to match covid country names
+dict = {'Myanmar': 'Burma', 'Côte d\'Ivoire':'Cote d\'Ivoire', 'South Korea': 'Korea, South',
+        'Saint Kitts & Nevis': 'Saint Kitts and Nevis', 'St. Vincent & Grenadines': 'Saint Vincent and the Grenadines',
+        'United States': 'US', 'Czech Republic (Czechia)': 'Czechia'}
+
+pop['Country'] = pop['Country'].replace(dict)
+
+covid_stats = pd.merge(covid_stats, pop[['Country', 'Population (2020)']], on='Country', how='left')
 
 #Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
