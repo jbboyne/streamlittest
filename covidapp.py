@@ -2,18 +2,28 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+#Get Covid-19 data by country
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
 
+#Get country population data
+url2 = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQWDB7LlBd2xZivtvv4T_Wh7Bmqh79Ed6CWAZnyMB23-Q-yHpGGew9_0OLV2xWqVXDywBV07FFe7YhL/pub?gid=1075357968&single=true&output=csv"
+df_pop = pd.read_csv(url2)
+
+
+#Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
 df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
 df['NumDays'] = df['NumDays'].astype(int)
 
+#Change Date from string to datetime format
 df['Date'] = pd.to_datetime(df['Date'])
 
+#Add page title and intro
 st.title("COVID-19 Global Time Series")
 st.write("Select a country or countries and measures from the panel at the left.")
 
+#Create sidebar widgets
 countries = st.sidebar.multiselect(
     "Select Countries",
     df['Country'].unique()
@@ -25,6 +35,7 @@ dropstats = statlist.drop(stats)
 
 type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
 
+#Apply widget selections to covid dataset
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset['Date']
 df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7).mean()
@@ -59,9 +70,6 @@ else:
             strokeDash = 'Country')
         st.altair_chart(line_chart)
         
-        
 
-url2 = "https://drive.google.com/file/d/17pc9hYM2S1hf7rrkj3fTDVY65RNwiJh-/view?usp=sharing"
-df_pop = pd.read_csv(url2)
 
 
