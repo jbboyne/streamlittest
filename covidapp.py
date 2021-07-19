@@ -18,7 +18,7 @@ dict = {'Myanmar': 'Burma', 'Côte d\'Ivoire':'Cote d\'Ivoire', 'South Korea': '
 
 pop['Country'] = pop['Country'].replace(dict)
 
-covid_stats = pd.merge(covid_stats, pop[['Country', 'Population (2020)']], on='Country', how='left')
+df = pd.merge(covid_stats, pop[['Country', 'Population (2020)']], on='Country', how='left')
 
 #Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
