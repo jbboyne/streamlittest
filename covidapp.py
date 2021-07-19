@@ -97,4 +97,4 @@ else:
         st.altair_chart(line_chart)
 
 if yaxis == 'Per Capita':
-        st.write("Per Capita figure is per 100,000 population")
+        st.write("Per Capita figure is per 100,000 population") 
