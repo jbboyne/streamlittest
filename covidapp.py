@@ -5,9 +5,6 @@ import altair as alt
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
 
-url2 = "https://www.kaggle.com/tanuprabhu/population-by-country-2020?select=population_by_country_2020.csv"
-pop = pd.read_csv(url2)
-
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
 df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
 df['NumDays'] = df['NumDays'].astype(int)
@@ -64,7 +61,7 @@ else:
         
         
 
-# url2 = "https://drive.google.com/file/d/17pc9hYM2S1hf7rrkj3fTDVY65RNwiJh-/view?usp=sharing"
-# df_pop = pd.read_csv(url2)
+url2 = "https://drive.google.com/file/d/17pc9hYM2S1hf7rrkj3fTDVY65RNwiJh-/view?usp=sharing"
+df_pop = pd.read_csv(url2)
 
 
