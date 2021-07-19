@@ -5,6 +5,7 @@ import altair as alt
 #Get Covid-19 data by country
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
+df = df.rename(columns={'Confirmed': 'Confirmed Cases'})
 
 #Get country population data
 url2 = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQWDB7LlBd2xZivtvv4T_Wh7Bmqh79Ed6CWAZnyMB23-Q-yHpGGew9_0OLV2xWqVXDywBV07FFe7YhL/pub?gid=1075357968&single=true&output=csv"
