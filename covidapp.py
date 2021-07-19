@@ -78,7 +78,7 @@ else:
         
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
-            y = 'Count',
+            y = 'Per Capita',
             color = 'Country', 
             strokeDash = 'Country')
         st.altair_chart(line_chart)
