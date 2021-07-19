@@ -40,7 +40,7 @@ countries = st.sidebar.multiselect(
     )
 
 statlist = df.columns.drop(['Date', 'Country', 'NumDays', 'Population (2020)'])
-stats = st.sidebar.multiselect("Select stat", statlist)
+stats = st.sidebar.multiselect("Select Stats", statlist)
 dropstats = statlist.drop(stats)
 
 type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
