@@ -20,33 +20,33 @@ dict = {'Myanmar': 'Burma', 'Côte d\'Ivoire':'Cote d\'Ivoire', 'South Korea': '
 pop['Country'] = pop['Country'].replace(dict)
 
 df = pd.merge(df, pop[['Country', 'Population (2020)']], on='Country', how='left')
+
+#Add a number of days count to each set of country data
+df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
+df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
+df['NumDays'] = df['NumDays'].astype(int)
+
+#Change Date from string to datetime format
+df['Date'] = pd.to_datetime(df['Date'])
+
+#Add page title and intro
+st.title("COVID-19 Global Time Series")
+st.write("Select a country or countries and measures from the panel at the left.")
+
+#Create sidebar widgets
+countries = st.sidebar.multiselect(
+    "Select Countries",
+    df['Country'].unique()
+    )
+
+statlist = df.columns.drop(['Date', 'Country', 'NumDays', 'Population (2020)'])
+stats = st.sidebar.multiselect("Select stat", statlist)
+dropstats = statlist.drop(stats)
+
+type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
+
+norm = st.sidebar.selectbox("Normalization", ["Per Capita (normalized)", "Count (not normalized)"])
 st.write(df)
-
-# #Add a number of days count to each set of country data
-# df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
-# df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
-# df['NumDays'] = df['NumDays'].astype(int)
-
-# #Change Date from string to datetime format
-# df['Date'] = pd.to_datetime(df['Date'])
-
-# #Add page title and intro
-# st.title("COVID-19 Global Time Series")
-# st.write("Select a country or countries and measures from the panel at the left.")
-
-# #Create sidebar widgets
-# countries = st.sidebar.multiselect(
-#     "Select Countries",
-#     df['Country'].unique()
-#     )
-
-# statlist = df.columns.drop(['Date', 'Country', 'NumDays', 'Population (2020)'])
-# stats = st.sidebar.multiselect("Select stat", statlist)
-# dropstats = statlist.drop(stats)
-
-# type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
-
-# norm = st.sidebar.selectbox("Normalization", ["Per Capita (normalized)", "Count (not normalized)"])
 
 # #Apply widget selections to covid dataset
 # df_subset = df.loc[lambda d: d['Country'].isin(countries)]
