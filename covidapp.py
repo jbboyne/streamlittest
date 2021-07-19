@@ -56,30 +56,29 @@ if type == "Compare measures for each country":
         st.write(country)
         current_df = df_subset.loc[lambda d: d['Country'] == country]
         popn = current_df['Population (2020)'].iloc[1]
-        st.write(popn)
         current_df = current_df.drop(columns = dropstats)
         current_df = current_df.drop(columns = ['NumDays', 'Country'])
         current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
 
-#         line_chart = alt.Chart(current_df).mark_line().encode(
-#             x = 'Date',
-#             y = 'Count',
-#             color='Measure',
-#             strokeDash = 'Measure')
-#         st.altair_chart(line_chart)
+        line_chart = alt.Chart(current_df).mark_line().encode(
+            x = 'Date',
+            y = 'Count',
+            color='Measure',
+            strokeDash = 'Measure')
+        st.altair_chart(line_chart)
         
-# else:
-#     this_df = pd.melt(df_subset, id_vars = ['Date', 'Country'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
-#     for stat in stats:
-#         st.write(stat)
-#         current_df = this_df.loc[lambda d: d['Measure'] == stat]
+else:
+    this_df = pd.melt(df_subset, id_vars = ['Date', 'Country'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
+    for stat in stats:
+        st.write(stat)
+        current_df = this_df.loc[lambda d: d['Measure'] == stat]
         
-#         line_chart = alt.Chart(current_df).mark_line().encode(
-#             x = 'Date',
-#             y = 'Count',
-#             color = 'Country', 
-#             strokeDash = 'Country')
-#         st.altair_chart(line_chart)
+        line_chart = alt.Chart(current_df).mark_line().encode(
+            x = 'Date',
+            y = 'Count',
+            color = 'Country', 
+            strokeDash = 'Country')
+        st.altair_chart(line_chart)
         
 
 
