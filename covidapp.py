@@ -73,6 +73,7 @@ else:
     for stat in stats:
         st.write(stat)
         current_df = this_df.loc[lambda d: d['Measure'] == stat]
+        st.write(current_df)
         
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
