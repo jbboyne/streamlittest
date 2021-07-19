@@ -88,5 +88,6 @@ else:
             color = 'Country', 
             strokeDash = 'Country')
         st.altair_chart(line_chart)
-        
-st.write("Per Capita figure is per 100,000 population")
+
+if yaxis == 'Per Capita':
+        st.write("Per Capita figure is per 100,000 population")
