@@ -67,8 +67,6 @@ if type == "Compare measures for each country":
         current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
         current_df['Per Capita'] = (current_df['Count']/popn) * 100000
         
-
-
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
             y = yaxis,
@@ -91,6 +89,4 @@ else:
             strokeDash = 'Country')
         st.altair_chart(line_chart)
         
-
-
-
+st.write("Per Capita figure is per 100,000 population")
