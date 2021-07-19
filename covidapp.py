@@ -46,14 +46,14 @@ dropstats = statlist.drop(stats)
 type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
 
 norm = st.sidebar.selectbox("Normalization", ["Per Capita (normalized)", "Count (not normalized)"])
-st.write(df)
 
-# #Apply widget selections to covid dataset
-# df_subset = df.loc[lambda d: d['Country'].isin(countries)]
-# df_dates = df_subset['Date']
-# df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7).mean()
-# df_subset = df_subset.join(df_dates)
-# df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on = 'Date').last()
+#Apply widget selections to covid dataset
+df_subset = df.loc[lambda d: d['Country'].isin(countries)]
+df_dates = df_subset['Date']
+df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7).mean()
+df_subset = df_subset.join(df_dates)
+df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on = 'Date').last()
+st.write(df_subset)
 
 # if norm == "Per Capita (normalized)":
 #         yaxis = 'Per Capita'
