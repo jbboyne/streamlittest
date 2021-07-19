@@ -67,40 +67,7 @@ else:
         
         
 
-url2 = "https://www.worldometers.info/world-population/population-by-country/"
-r = requests.get(url2)
+url2 = "https://drive.google.com/file/d/17pc9hYM2S1hf7rrkj3fTDVY65RNwiJh-/view?usp=sharing"
+df_pop = pd.read_csv(url2)
 
-soup = BeautifulSoup(r.content, 'html.parser')
-
-
-countries = soup.find_all("table")[0]
-df2 = pd.read_html(str(countries))[0]
-
-def function(a, b, c, d, e, f, g, h, i, j, k):
-    data = pd.DataFrame(
-        {'a': df2[a],
-         'b': df2[b],
-         'c': df2[c],
-         'd': df2[d],
-         'e': df2[e],
-         'f': df2[f],
-         'g': df2[g],
-         'h': df2[h],
-         'i': df2[i],
-         'j': df2[j],
-         'k': df2[k]
-         }
-    )
-
-    return data
-
-df_pop = function('Country (or dependency)', 'Population (2020)',
-              'Yearly Change', 'Net Change', 'Density (P/Km²)',
-              'Land Area (Km²)', 'Migrants (net)', 'Fert. Rate',
-              'Med. Age', 'Urban Pop %', 'World Share')
-
-df_pop.columns = ['Country (or dependency)', 'Population (2020)',
-              'Yearly Change', 'Net Change', 'Density (P/Km²)',
-              'Land Area (Km²)', 'Migrants (net)', 'Fert. Rate',
-              'Med. Age', 'Urban Pop %', 'World Share']
 
