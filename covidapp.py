@@ -54,4 +54,5 @@ if type == "Compare measures for each country":
 else:
     for stat in stats:
         st.write(stat)
-        current_df = df_subset.loc[lambda d: d['Measure'] == stat]
+        current_df = pd.melt(current_df, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
+        st.write(current_df)
