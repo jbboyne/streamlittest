@@ -47,7 +47,6 @@ if type == "Compare measures for each country":
 #         .properties(
 #             title='title'
 #         )
-
         st.altair_chart(line_chart)
         
 else:
@@ -64,7 +63,6 @@ else:
 #         .properties(
 #             title = 'title'
 #         )
-        
         st.altair_chart(line_chart)
         
         
