@@ -53,5 +53,5 @@ if type == "Compare measures for each country":
         st.altair_chart(line_chart)
         
 else:
-    for stat in statlist:
+    for stat in stats:
         st.write(stat)
