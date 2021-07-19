@@ -64,7 +64,7 @@ else:
         
         
 
-url2 = "https://drive.google.com/file/d/17pc9hYM2S1hf7rrkj3fTDVY65RNwiJh-/view?usp=sharing"
-df_pop = pd.read_csv(url2)
+# url2 = "https://drive.google.com/file/d/17pc9hYM2S1hf7rrkj3fTDVY65RNwiJh-/view?usp=sharing"
+# df_pop = pd.read_csv(url2)
 
 
