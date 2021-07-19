@@ -28,7 +28,6 @@ type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", 
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
 df_dates = df_subset['Date']
 df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7).mean()
-st.write(df_subset)
 df_subset = df_subset.join(df_dates)
 df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on = 'Date').last()
 
@@ -56,7 +55,6 @@ else:
     for stat in stats:
         st.write(stat)
         current_df = this_df.loc[lambda d: d['Measure'] == stat]
-#         st.write(current_df)
         
         line_chart = alt.Chart(current_df).mark_line().encode(
             x = 'Date',
