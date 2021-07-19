@@ -38,7 +38,7 @@ countries = st.sidebar.multiselect(
     df['Country'].unique()
     )
 
-statlist = df.columns.drop(['Date', 'Country', 'NumDays'])
+statlist = df.columns.drop(['Date', 'Country', 'NumDays', 'Population (2020)'])
 stats = st.sidebar.multiselect("Select stat", statlist)
 dropstats = statlist.drop(stats)
 
