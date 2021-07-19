@@ -5,7 +5,7 @@ import altair as alt
 url = "https://raw.githubusercontent.com/datasets/covid-19/main/data/countries-aggregated.csv"
 df = pd.read_csv(url)
 
-url2 = https://www.kaggle.com/tanuprabhu/population-by-country-2020?select=population_by_country_2020.csv
+url2 = "https://www.kaggle.com/tanuprabhu/population-by-country-2020?select=population_by_country_2020.csv"
 pop = pd.read_csv(url2)
 
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
