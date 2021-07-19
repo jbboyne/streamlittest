@@ -52,8 +52,8 @@ if type == "Compare measures for each country":
         st.altair_chart(line_chart)
         
 else:
-    current_df = pd.melt(df_subset, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
+    this_df = pd.melt(df_subset, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
     for stat in stats:
         st.write(stat)
-        current_df = current_df.loc[lambda d: d['Measure'] == stat]
+        current_df = this_df.loc[lambda d: d['Measure'] == stat]
         st.write(current_df)
