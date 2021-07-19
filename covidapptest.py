@@ -49,6 +49,9 @@ norm = st.sidebar.selectbox("Normalization", ["Per Capita (normalized)", "Count 
 
 if countries == []:
         countries = ['US', 'Canada', 'Mexico']
+        
+if stats == []:
+        stats = ['Death', 'Confirmed Cases']
 
 #Apply widget selections to covid dataset
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
