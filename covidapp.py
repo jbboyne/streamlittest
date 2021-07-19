@@ -44,9 +44,6 @@ if type == "Compare measures for each country":
             y = 'Cumulative Count',
             color='Measure',
             strokeDash = 'Measure')
-#         .properties(
-#             title='title'
-#         )
         st.altair_chart(line_chart)
         
 else:
@@ -60,9 +57,6 @@ else:
             y = 'Cumulative Count',
             color = 'Country', 
             strokeDash = 'Country')
-#         .properties(
-#             title = 'title'
-#         )
         st.altair_chart(line_chart)
         
         
