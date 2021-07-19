@@ -55,7 +55,6 @@ if type == "Compare measures for each country":
     for country in countries:
         st.write(country)
         current_df = df_subset.loc[lambda d: d['Country'] == country]
-        st.write(current_df['Population (2020)'])
         popn = current_df['Population (2020)'].iloc[1]
         st.write(popn)
 #         current_df = current_df.drop(columns = dropstats)
