@@ -82,11 +82,7 @@ if type == "Compare measures for each country":
         st.altair_chart(line_chart)
         
 else:
-    if countries == []:
-        countries = ['US', 'Canada', 'Mexico']
-        
-    if stats == []:
-        stats = ['Deaths', 'Confirmed Cases']
+    st.write(df_subset)
     this_df = pd.melt(df_subset, id_vars = ['Date', 'Country', 'Population (2020)'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
 
     for stat in stats:
