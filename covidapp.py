@@ -54,3 +54,4 @@ if type == "Compare measures for each country":
 else:
     for stat in stats:
         st.write(stat)
+        current_df = df_subset.loc[lambda d: d['Measure'] == stat]
