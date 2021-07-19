@@ -50,7 +50,6 @@ df_dates = df_subset['Date']
 df_subset = df_subset.groupby(['Country'], as_index = False).rolling(window = 7).mean()
 df_subset = df_subset.join(df_dates)
 df_subset = df_subset.groupby(['Country'], as_index = False).resample('7D', on = 'Date').last()
-st.write(df_subset)
 
 if type == "Compare measures for each country":
     for country in countries:
@@ -58,6 +57,7 @@ if type == "Compare measures for each country":
         current_df = df_subset.loc[lambda d: d['Country'] == country]
         current_df = current_df.drop(columns = dropstats)
         current_df = current_df.drop(columns = ['NumDays', 'Country'])
+        st.write(current_df)
         current_df = pd.melt(current_df, id_vars = 'Date', value_vars = stats, var_name = 'Measure', value_name = 'Count')
 #         st.write(current_df)
 
