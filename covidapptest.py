@@ -67,7 +67,7 @@ else: yaxis = 'Count'
 if type == "Compare measures for each country":
     for country in countries:
         st.write(country)
-#         current_df = df_subset.loc[lambda d: d['Country'] == country]
+        current_df = df_subset.loc[lambda d: d['Country'] == country]
 #         popn = current_df['Population (2020)'].iloc[1]
 #         current_df = current_df.drop(columns = dropstats)
 #         current_df = current_df.drop(columns = ['NumDays', 'Country'])
