@@ -85,8 +85,8 @@ else:
     st.write(df_subset)
     this_df = pd.melt(df_subset, id_vars = ['Date', 'Country', 'Population (2020)'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
 
-#     for stat in stats:
-#         st.write(stat)
+    for stat in stats:
+        st.write(stat)
 #         current_df = this_df.loc[lambda d: d['Measure'] == stat]
 #         current_df['Per Capita'] = (current_df['Count']/current_df['Population (2020)']) * 100000
         
