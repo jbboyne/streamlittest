@@ -41,7 +41,7 @@ countries = st.sidebar.multiselect(
 
 statlist = df.columns.drop(['Date', 'Country', 'NumDays', 'Population (2020)'])
 stats = st.sidebar.multiselect("Select Stats", statlist)
-dropstats = statlist.drop(stats)
+
 
 type = st.sidebar.selectbox("Chart Type", ["Compare countries by each measure", "Compare measures for each country"])
 
@@ -52,6 +52,8 @@ if countries == []:
         
 if stats == []:
         stats = ['Deaths', 'Confirmed Cases']
+        
+dropstats = statlist.drop(stats)
 
 #Apply widget selections to covid dataset
 df_subset = df.loc[lambda d: d['Country'].isin(countries)]
