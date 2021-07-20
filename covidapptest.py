@@ -71,7 +71,7 @@ if type == "Compare measures for each country":
         popn = current_df['Population (2020)'].iloc[1]
         current_df = current_df.drop(columns = dropstats)
         current_df = current_df.drop(columns = ['NumDays', 'Country'])
-#         current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
+        current_df = pd.melt(current_df, id_vars = ['Date'], value_vars = stats, var_name = 'Measure', value_name = 'Count')
 #         current_df['Per Capita'] = (current_df['Count']/popn) * 100000
         
 #         line_chart = alt.Chart(current_df).mark_line().encode(
