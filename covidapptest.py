@@ -87,15 +87,15 @@ else:
 
     for stat in stats:
         st.write(stat)
-#         current_df = this_df.loc[lambda d: d['Measure'] == stat]
-#         current_df['Per Capita'] = (current_df['Count']/current_df['Population (2020)']) * 100000
+        current_df = this_df.loc[lambda d: d['Measure'] == stat]
+        current_df['Per Capita'] = (current_df['Count']/current_df['Population (2020)']) * 100000
         
-#         line_chart = alt.Chart(current_df).mark_line().encode(
-#             x = 'Date',
-#             y = yaxis,
-#             color = 'Country', 
-#             strokeDash = 'Country')
-#         st.altair_chart(line_chart)
+        line_chart = alt.Chart(current_df).mark_line().encode(
+            x = 'Date',
+            y = yaxis,
+            color = 'Country', 
+            strokeDash = 'Country')
+        st.altair_chart(line_chart)
 
-# if yaxis == 'Per Capita':
-#         st.write("Per Capita figure is per 100,000 population")
+if yaxis == 'Per Capita':
+        st.write("Per Capita figure is per 100,000 population")
