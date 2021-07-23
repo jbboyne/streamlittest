@@ -26,7 +26,7 @@ df_disab = pd.read_csv("https://www.ssa.gov/disability/data/SSA-SA-FYWL.csv")
 attribute = 'Percent of Adult Population Receiving SSA Adult Disability Benefits'
 df_disab = df_disab[['Date', attribute]].groupby(['Date']).mean()
 df_disab.reset_index(inplace = True)
-df_disab['Date'] = df_disab['Date'].astype(str)
+
 
 #Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
@@ -108,7 +108,7 @@ else:
 if yaxis == 'Per Capita':
         st.write("Per Capita figure is per 100,000 population")
         
-
+pd.options.display.float_format = '{:0.0f}'.format
 st.write('US Adults receiving disability benefits')        
 disab_rpt = df_disab[['Date', 'Percent of Adult Population Receiving SSA Adult Disability Benefits']]
 line_chart_disab = alt.Chart(disab_rpt).mark_line().encode(
