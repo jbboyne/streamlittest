@@ -26,6 +26,7 @@ df_disab = pd.read_csv("https://www.ssa.gov/disability/data/SSA-SA-FYWL.csv")
 attribute = 'Percent of Adult Population Receiving SSA Adult Disability Benefits'
 df_disab = df_disab[['Date', attribute]].groupby(['Date']).mean()
 df_disab.reset_index(inplace = True)
+df_disab['Date'] = df_disab['Date'].astype(int)
 
 #Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
