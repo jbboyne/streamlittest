@@ -110,5 +110,5 @@ disab_rpt = df_disab[['Date', 'Percent of Adult Population Receiving SSA Adult D
 yaxis_disab = 'Percent of Adult Population Receiving SSA Adult Disability Benefits'
 line_chart_disab = alt.Chart(disab_rpt).mark_line().encode(
         x = 'Date',
-        y = yaxis_disab,
+        y = yaxis_disab)
 st.altair_chart(line_chart_disab)
