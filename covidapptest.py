@@ -21,6 +21,9 @@ pop['Country'] = pop['Country'].replace(dict)
 
 df = pd.merge(df, pop[['Country', 'Population (2020)']], on='Country', how='left')
 
+#Get disability data
+df_disab = pd.read_csv("https://www.ssa.gov/disability/data/SSA-SA-FYWL.csv")
+
 #Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
 df['NumDays'] = pd.to_numeric(df['NumDays'])/(60*60*12*1000000000)
@@ -100,3 +103,12 @@ else:
 
 if yaxis == 'Per Capita':
         st.write("Per Capita figure is per 100,000 population")
+        
+
+st.write('US Adults receiving disability benefits')        
+disab_rpt = df_disab[['Date', 'Percent of Adult Population Receiving SSA Adult Disability Benefits']]
+yaxis_disab = 'Percent of Adult Population Receiving SSA Adult Disability Benefits'
+line_chart_disab = alt.Chart(disab_rpt).mark_line().encode(
+        x = 'Date',
+        y = yaxis_disab,
+st.altair_chart(line_chart_disab)
