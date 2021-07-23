@@ -120,3 +120,7 @@ line_chart_disab = alt.Chart(df_disab_count).mark_line().encode(
 st.altair_chart(line_chart_disab)
 
 
+line_chart_filing = alt.Chart(df_disab_filing).mark_line().encode(
+        x = 'Date',
+        y = 'Eligible Adult Population Filing Rate')
+st.altair_chart(line_chart_filing)
