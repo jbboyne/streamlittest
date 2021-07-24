@@ -30,6 +30,9 @@ df_disab_count.reset_index(inplace = True)
 df_disab_filing = df_disab[['Date', 'Eligible Adult Population Filing Rate']].groupby(['Date']).mean()
 df_disab_filing.reset_index(inplace = True)
 
+df_adult_receipts = df_disab[['Date', 'Adult Receipts']].groupby(['Date']).mean()
+df_adult_receipts.reset_index(inplace = True)
+
 
 #Add a number of days count to each set of country data
 df['NumDays'] = pd.to_datetime(df['Date']) - pd.to_datetime('2020-01-22')
@@ -124,3 +127,11 @@ line_chart_filing = alt.Chart(df_disab_filing).mark_line().encode(
         x = 'Date',
         y = 'Eligible Adult Population Filing Rate')
 st.altair_chart(line_chart_filing)
+
+
+line_chart_adultrecpts = alt.Chart(df_adult_receipts).mark_line().encode(
+        x = 'Date',
+        y = 'Adult Receipts')
+st.altair_chart(line_chart_adultrecpts)
+
+
