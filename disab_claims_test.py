@@ -7,6 +7,7 @@ df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT
 df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
 df_disab_count = df_disab_count.sort_values(by=['Year'], inplace=True)
+st.write(df_disab_count)
 # df_disab_count['recent%'] = df_disab_count.sort_values(by=['Year'], inplace=True).groupby(['State Code']).rolling(2).sum()
 
 # df_recent_change = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])]
@@ -16,11 +17,11 @@ df_disab_count = df_disab_count.sort_values(by=['Year'], inplace=True)
 # st.write(df_recent_change)
 
 
-#Create sidebar widgets
-states = st.sidebar.multiselect(
-    "Select States",
-    df_disab_count['State Code'].unique()
-    )
+# #Create sidebar widgets
+# states = st.sidebar.multiselect(
+#     "Select States",
+#     df_disab_count['State Code'].unique()
+#     )
 
 # # chgpct = st.sidebar.selectbox(
 # #     "Select recent change range",
