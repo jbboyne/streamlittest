@@ -4,6 +4,7 @@ import locale
 import altair as alt
 
 df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT7_v2esJv6ovgKoF8pMGT_A88Hm_nHOsfYcgOIaVqeUCv4KLJc2Zx2a9-8bq30EmbIqUCZHuPqasNh/pub?gid=2101361199&single=true&output=csv")
+df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 
 #Create sidebar widgets
 states = st.sidebar.multiselect(
