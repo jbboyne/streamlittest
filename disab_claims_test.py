@@ -14,7 +14,7 @@ states = st.sidebar.multiselect(
     )
 
 if states == []:
-        states = ['TX', 'FL', 'KY', 'GA']
+        states = df_disab_count['State Code'].unique()
 
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
