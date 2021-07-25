@@ -12,35 +12,36 @@ changerates = df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'r
 changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0) 
 st.write(changerates.astype(str))
 
-# #Create sidebar widgets
-# states = st.sidebar.multiselect(
-#     "Select States",
-#     df_disab_count['State Code'].unique()
-#     )
+#Create sidebar widgets
+states = st.sidebar.multiselect(
+    "Select States",
+    df_disab_count['State Code'].unique()
+    )
 
-# # chgpct = st.sidebar.selectbox(
-# #     "Select recent change range",
-# #     changerates
+chgpct = st.sidebar.selectbox(
+    "Select recent change range",
+    changerates['recent%bin'].unique()
+)
 
-# if states == []:
-#         states = ['KY', 'TX', 'FL', 'GA']
+if states == []:
+        states = ['KY', 'TX', 'FL', 'GA']
 
-# df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
+df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
-# st.title("New disability claims by state, Year over Year Change")
-# st.write("Choose different states with the widget in the left panel.")
+st.title("New disability claims by state, Year over Year Change")
+st.write("Choose different states with the widget in the left panel.")
 
-# line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
+line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
+        x = 'Year',
+        y = 'YOY change',
+        color='State Code',
+        strokeDash='State Code'
+)
+
+st.altair_chart(line_chart_all_SSDI_claims)
+
+#
+# line_chart_SSDI_only = alt.Chart(df_disab_count).mark_line().encode(
 #         x = 'Year',
-#         y = 'YOY change',
-#         color='State Code',
-#         strokeDash='State Code'
-# )
-
-# st.altair_chart(line_chart_all_SSDI_claims)
-
-# #
-# # line_chart_SSDI_only = alt.Chart(df_disab_count).mark_line().encode(
-# #         x = 'Year',
-# #         y = '13 Receipts (Initial SSDI Only)')
-# # st.altair_chart(line_chart_SSDI_only)
+#         y = '13 Receipts (Initial SSDI Only)')
+# st.altair_chart(line_chart_SSDI_only)
