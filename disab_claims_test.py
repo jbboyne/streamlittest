@@ -7,7 +7,8 @@ df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT
 df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
 # df_disab_count['recent%'] = 
-st.write(df_disab_count.groupby(['State Code'])[df_disab_count['Year'].isin(['2020', '2021'])])
+st.write(df_disab_count.groupby(['State Code']))
+#          [df_disab_count['Year'].isin(['2020', '2021'])])
 
 
 #Create sidebar widgets
