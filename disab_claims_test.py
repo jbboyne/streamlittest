@@ -3,11 +3,9 @@ import pandas as pd
 import locale
 import altair as alt
 
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 pd.set_option("max_columns", 30)
 pd.set_option("max_rows", 100)
-# pd.options.display.float_format = '{:0.0f}'.format
 
 cols = ['SSA File',
      'Version',
