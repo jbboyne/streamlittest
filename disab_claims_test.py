@@ -16,9 +16,9 @@ states = st.sidebar.multiselect(
     df_disab_count['State Code'].unique()
     )
 
-chgpct = st.sidebar.selectbox(
-    "Select recent change range",
-    df_disab_count
+# chgpct = st.sidebar.selectbox(
+#     "Select recent change range",
+#     df_disab_count
 
 if states == []:
         states = ['KY', 'TX', 'FL', 'GA']
