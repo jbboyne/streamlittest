@@ -22,7 +22,7 @@ states = st.sidebar.multiselect(
 
 chgpct = st.sidebar.selectbox(
     "Select recent change range",
-    changerates['recent%bin'].unique()
+    ["Lowest", "2", "3", "4", "Highest"]
 )
 
 if states == []:
