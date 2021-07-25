@@ -8,7 +8,9 @@ df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
 
 df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
-st.write(df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'recent%']])
+changerates = df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'recent%']]
+changerates['bin'] = pd.cut(changerates['recent%'], 5) 
+st.write(changerates)
 
 #Create sidebar widgets
 states = st.sidebar.multiselect(
@@ -18,7 +20,7 @@ states = st.sidebar.multiselect(
 
 # chgpct = st.sidebar.selectbox(
 #     "Select recent change range",
-#     df_disab_count
+#     changerates
 
 if states == []:
         states = ['KY', 'TX', 'FL', 'GA']
