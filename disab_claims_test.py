@@ -42,6 +42,7 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
 st.altair_chart(line_chart_all_SSDI_claims)
 
 state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
+st.write(state_selection)
 df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 st.write(df_subset2)
 
