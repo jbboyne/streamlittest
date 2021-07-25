@@ -13,6 +13,7 @@ df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].tr
 changerates = df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'recent%']]
 changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, include_lowest=True, labels=["Lowest", "2", "3", "4", "Highest"]) 
 
+
 #Create sidebar widgets
 states = st.sidebar.multiselect(
     "Select States",
@@ -24,9 +25,15 @@ chgpct = st.sidebar.selectbox(
     ["Lowest", "2", "3", "4", "Highest"]
 )
 
-if states == []:
-        states = ['KY', 'TX', 'FL', 'GA']
+if chgpct == []:
+    chgpct == '4'
 
+state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
+df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
+
+if states == []:
+        states = state_selection
+        
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
 st.title("New disability claims by state, Year over Year Change")
@@ -40,9 +47,6 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
 )
 
 st.altair_chart(line_chart_all_SSDI_claims)
-
-state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
-df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
 st.title("New disability claims by state, Year over Year Change")
 st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
