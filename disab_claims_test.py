@@ -97,14 +97,8 @@ df_disab['Year-Month'] = df_disab['Date'].dt.strftime('%Y-%m')
 df_disab['Year'] = pd.DatetimeIndex(df_disab['Date']).year.astype(str)
 df_disab['All SSDI'] = df_disab['13 Receipts (Initial SSDI Only)'] + df_disab['23 Receipts (Initial Concurrent Only)']
 
-st.write("df_disab")
-st.write(df_disab.head())
-
 df_disab_count = df_disab[['Year', 'Region Code', 'State Code', 'All SSDI', '13 Receipts (Initial SSDI Only)']].groupby(['Year', 'State Code']).mean()
 df_disab_count.reset_index(inplace=True)
-
-st.write("df_disab_count")
-st.write(df_disab_count.head())
 
 #Create sidebar widgets
 states = st.sidebar.multiselect(
@@ -112,17 +106,11 @@ states = st.sidebar.multiselect(
     df_disab_count['State Code'].unique()
     )
 
-if states == []:
-        states = ['AZ']
-st.write("States")
-st.write(states)
-
+# if states == []:
+#         states = ['AZ']
 
 
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
-
-st.write("df_subset")
-st.write(df_subset.head())
 
 line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
         x = 'Year',
