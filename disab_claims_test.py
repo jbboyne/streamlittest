@@ -42,11 +42,10 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
 st.altair_chart(line_chart_all_SSDI_claims)
 
 state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
-st.write(state_selection)
 df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
-st.write(df_subset2)
 
 st.title("New disability claims by state, Year over Year Change")
+st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
 line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
         x = 'Year',
         y = 'YOY change',
@@ -54,9 +53,3 @@ line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
         strokeDash='State Code'
 )
 st.altair_chart(line_chart_by_quintile)
-
-#
-# line_chart_SSDI_only = alt.Chart(df_disab_count).mark_line().encode(
-#         x = 'Year',
-#         y = '13 Receipts (Initial SSDI Only)')
-# st.altair_chart(line_chart_SSDI_only)
