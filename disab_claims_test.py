@@ -32,14 +32,14 @@ df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 st.title("New disability claims by state, Year over Year Change")
 st.write("Choose different states with the widget in the left panel.")
 
-line_chart_by_quintile = alt.Chart(df_subset).mark_line().encode(
+line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
         x = 'Year',
         y = 'YOY change',
         color='State Code',
         strokeDash='State Code'
 )
 
-st.altair_chart(line_chart_by_quintile)
+st.altair_chart(line_chart_all_SSDI_claims)
 
 state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
 st.write(state_selection)
@@ -47,12 +47,13 @@ df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 st.write(df_subset2)
 
 st.title("New disability claims by state, Year over Year Change")
-line_chart_all_SSDI_claims = alt.Chart(df_subset2).mark_line().encode(
+line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
         x = 'Year',
         y = 'YOY change',
         color='State Code',
         strokeDash='State Code'
 )
+st.altair_chart(line_chart_by_quintile)
 
 #
 # line_chart_SSDI_only = alt.Chart(df_disab_count).mark_line().encode(
