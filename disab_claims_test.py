@@ -9,8 +9,8 @@ df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'
 
 df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 changerates = df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'recent%']]
-df_disab_count['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0) 
-st.write(df_disab_count['recent%bin'].astype(str))
+changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0) 
+st.write(changerates['recent%bin'].astype(str))
 
 # #Create sidebar widgets
 # states = st.sidebar.multiselect(
