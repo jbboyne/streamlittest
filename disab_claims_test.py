@@ -7,7 +7,7 @@ df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT
 df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
 # df_disab_count['recent%'] = 
-st.write(df_disab_count.groupby(['State Code'])[df_disab_count['Year'] == 2021].sum())
+st.write(df_disab_count[df_disab_count['Year'] == '2021'].groupby(['State Code'])['All SSDI'].sum())
 #                                                 .isin(['2020', '2021'])])
 
 
