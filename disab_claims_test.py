@@ -12,7 +12,6 @@ df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'
 df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 changerates = df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'recent%']]
 changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, include_lowest=True, labels=["Lowest", "2", "3", "4", "Highest"]) 
-st.write(changerates.astype(str))
 
 #Create sidebar widgets
 states = st.sidebar.multiselect(
@@ -41,6 +40,9 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
 )
 
 st.altair_chart(line_chart_all_SSDI_claims)
+
+state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
+st.write(state_selection)
 
 #
 # line_chart_SSDI_only = alt.Chart(df_disab_count).mark_line().encode(
