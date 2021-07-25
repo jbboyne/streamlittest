@@ -17,6 +17,9 @@ if states == []:
 
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
+st.title("New disability claims by state")
+st.write("Choose different states with the widget in the left panel.")
+
 line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
         x = 'Year',
         y = 'All SSDI',
