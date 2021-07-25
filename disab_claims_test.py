@@ -8,7 +8,7 @@ df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
 
 df_recent_change = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])]
-df_recent_change['recent%'] = df_recent_change.groupby(['State Code'])['All SSDI'].rolling.mean()
+df_recent_change['recent%'] = df_recent_change.groupby(['State Code'])['All SSDI'].rolling().mean()
 # df_disab_count['recent%'] = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])].groupby(['State Code'])['All SSDI'].sum()
 
 st.write(df_recent_change)
