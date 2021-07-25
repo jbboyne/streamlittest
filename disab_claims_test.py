@@ -16,11 +16,11 @@ df_disab_count = df_disab_count.sort_values(by=['Year'], inplace=True)
 # st.write(df_recent_change)
 
 
-# #Create sidebar widgets
-# states = st.sidebar.multiselect(
-#     "Select States",
-#     df_disab_count['State Code'].unique()
-#     )
+#Create sidebar widgets
+states = st.sidebar.multiselect(
+    "Select States",
+    df_disab_count['State Code'].unique()
+    )
 
 # # chgpct = st.sidebar.selectbox(
 # #     "Select recent change range",
