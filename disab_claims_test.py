@@ -6,7 +6,8 @@ import altair as alt
 df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT7_v2esJv6ovgKoF8pMGT_A88Hm_nHOsfYcgOIaVqeUCv4KLJc2Zx2a9-8bq30EmbIqUCZHuPqasNh/pub?gid=2101361199&single=true&output=csv")
 df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
-df_disab_count['recent%'] = df_disab_count.sort_values(by=['Year'], inplace=True).groupby(['State Code']).rolling(2).sum()
+df_disab_count = df_disab_count.sort_values(by=['Year'], inplace=True)
+# df_disab_count['recent%'] = df_disab_count.sort_values(by=['Year'], inplace=True).groupby(['State Code']).rolling(2).sum()
 
 # df_recent_change = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])]
 # df_recent_change['recent%'] = df_recent_change.groupby(['State Code'])['All SSDI'].rolling(1).mean()
