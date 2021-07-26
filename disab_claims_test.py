@@ -7,7 +7,8 @@ df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS
 df_disab_count = df_disab_count[~df_disab_count['State Code'].isin(['FE', 'GU', 'EA', 'EO', 'EM', 'EV'])]
 st.write(df_disab_count)
 df_disab_count['Year'] = df_disab_count['Year'].astype(str)
-df_disab_count['YOY change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
+df_disab_count['MOM change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
+df_disab_count['Avg Monthly Change'] = df_disab_count.groupby(['Year'])['MOM change'].mean()
 st.write(df_disab_count)
 
 df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
