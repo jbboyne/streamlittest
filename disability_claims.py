@@ -30,12 +30,12 @@ changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['Ye
 changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
 changerates = changerates.rename(columns={'YOY change %': 'Avg change 2020-2021'})
-changerates['bin'] = pd.cut(changerates['Avg change 2020-2021'], 5, labels=["Lowest", "2", "3", "4", "Highest"])
+changerates['bin'] = pd.cut(changerates['Avg change 2020-2021'], 5, labels=["Lowest", "2nd", "3rd", "4th", "Highest"])
 #--------------------------------------------------------------------------------------
 
 #Create sidebar widgets
 
-values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
+values = ['<select>', ""Lowest", "2nd", "3rd", "4th", "Highest""]
 default_ix = values.index("4")
 chgpct = st.sidebar.selectbox(
     "Select 2020-2021 change rate quintile",
