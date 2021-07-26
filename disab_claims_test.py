@@ -40,6 +40,8 @@ if chgpct == []:
     chgpct == '4'
 
 state_selection = changerates[changerates['Avg Monthly Change Per Year'] == chgpct]['State Code'].unique()
+st.write(changerates)
+st.write(state_selection)
 # df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
 # if states == []:
