@@ -39,7 +39,7 @@ states = st.sidebar.multiselect(
 if chgpct == []:
     chgpct == '4'
 
-# state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
+state_selection = changerates[changerates['Avg Monthly Change Per Year'] == chgpct]['State Code'].unique()
 # df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
 # if states == []:
