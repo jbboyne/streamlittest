@@ -1,4 +1,4 @@
-    with st.echo():
+with st.echo():
     import streamlit as st
     import pandas as pd
     import altair as alt
