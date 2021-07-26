@@ -31,17 +31,13 @@ chgpct = st.sidebar.selectbox(
     values, index=default_ix
 )
 
-# states = st.sidebar.multiselect(
-#     "Select States",
-#     df_disab_count['State Code'].unique()
-#     )
+states = st.sidebar.multiselect(
+    "Select States",
+    df_disab_count['State Code'].unique()
+    )
 
-# # values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
-# # default_ix = values.index("4")
-# # window_ANTICOR = st.sidebar.selectbox('Window ANTICOR', values, index=default_ix)
-
-# if chgpct == []:
-#     chgpct == '4'
+if chgpct == []:
+    chgpct == '4'
 
 # state_selection = changerates[changerates['recent%bin'] == chgpct]['State Code'].unique()
 # df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
