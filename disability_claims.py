@@ -18,7 +18,7 @@ avg_monthly_claims_byyear = df_disab_count.groupby(['Year', 'State Code'])['All 
 avg_monthly_claims_byyear = avg_monthly_claims_byyear.rename(columns={'All SSDI': 'Avg monthly SSDI claims'})
 avg_monthly_claims_byyear.index = avg_monthly_claims_byyear.index.set_names(['Year', 'State Code'])
 avg_monthly_claims_byyear.reset_index(inplace=True)
-avg_monthly_claims_byyear['YOY change'] = avg_monthly_claims_byyear.groupby(['State Code'])['Avg monthly SSDI claims'].pct_change(1) * 100
+avg_monthly_claims_byyear['YOY change %'] = avg_monthly_claims_byyear.groupby(['State Code'])['Avg monthly SSDI claims'].pct_change(1) * 100
 
 #Merge the normalized measure into the original data
 df_disab_count = df_disab_count.drop(columns= ['Year-Month', 'Unnamed: 0', 'All SSDI', 'Receipts (Initial SSDI Only)'])
@@ -26,10 +26,10 @@ df_disab_count = avg_monthly_claims_byyear.merge(df_disab_count, how='right', on
 df_disab_count = df_disab_count.drop_duplicates()
 
 #Create bins to categorize states by recent change in claims
-changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['Year', 'State Code', 'YOY change']].groupby(['State Code']).mean()
+changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['Year', 'State Code', 'YOY change %']].groupby(['State Code']).mean()
 changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
-changerates = changerates.rename(columns={'YOY change': 'Avg change 2020-2021'})
+changerates = changerates.rename(columns={'YOY change %': 'Avg change 2020-2021'})
 changerates['bin'] = pd.cut(changerates['Avg change 2020-2021'], 5, labels=["Lowest", "2", "3", "4", "Highest"])
 #--------------------------------------------------------------------------------------
 
