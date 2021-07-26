@@ -11,7 +11,7 @@ avg_rate_by_year = df_disab_count.groupby(['Year', 'State Code'])['MOM change'].
 avg_rate_by_year.index = avg_rate_by_year.index.set_names(['Year', 'State Code'])
 df_disab_count = avg_rate_by_year.merge(df_disab_count, how='right', on=['Year', 'State Code'])
 st.write(df_disab_count.columns)
-df_disab_count = df_disab_count.rename({'MOM change_x': 'Avg Monthly Change Per Year'})
+df_disab_count = df_disab_count.rename(columns={'MOM change_x': 'Avg Monthly Change Per Year'})
 df_disab_count = df_disab_count.groupby(['Year', 'State Code']).mean()
 st.write(df_disab_count)
 
