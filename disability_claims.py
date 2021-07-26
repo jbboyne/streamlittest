@@ -35,7 +35,7 @@ changerates['bin'] = pd.cut(changerates['Avg change 2020-2021'], 5, labels=["Low
 
 #Create sidebar widgets
 
-values = ['<select>', "Lowest", "2nd", "3rd", "4th", "Highest""]
+values = ['<select>', "Lowest", "2nd", "3rd", "4th", "Highest"]
 default_ix = values.index("4")
 chgpct = st.sidebar.selectbox(
     "Select 2020-2021 change rate quintile",
