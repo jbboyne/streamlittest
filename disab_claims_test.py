@@ -16,8 +16,8 @@ df_disab_count = df_disab_count.groupby(['Year', 'State Code']).mean()
 df_disab_count.index = df_disab_count.index.set_names(['Year', 'State Code'])
 st.write(df_disab_count)
 df_disab_count = df_disab_count.to_frame()
-df_disab_count = df_disab_count.reset_index(inplace=True)
-st.write(df_disab_count)
+# df_disab_count = df_disab_count.reset_index(inplace=True)
+# st.write(df_disab_count)
 
 # df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 # changerates = df_disab_count[(df_disab_count['Year'] == '2020') or (df_disab_count['Year'] == '2021')][['State Code', 'Avg Monthly Change Per Year']]
