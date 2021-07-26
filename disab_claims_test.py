@@ -49,15 +49,15 @@ if states == []:
         
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
-# st.title("New disability claims by state, Year over Year Change")
-# st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
-# st.write("Quintile: ", chgpct)
-# line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
-#         x = 'Year',
-#         y = 'YOY change',
-#         color='State Code',
-#         strokeDash='State Code'
-# )
+st.title("New disability claims by state, Year over Year Change")
+st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
+st.write("Quintile: ", chgpct)
+line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
+        x = 'Year',
+        y = 'Avg Monthly Change Per Year',
+        color='State Code',
+        strokeDash='State Code'
+)
 
 # st.altair_chart(line_chart_by_quintile)
 
