@@ -46,7 +46,8 @@ df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
 if states == []:
         states = state_selection
-else states = states
+else: 
+    states = states
         
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
