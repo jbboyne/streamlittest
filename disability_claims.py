@@ -74,7 +74,7 @@ with col1:
     st.write("Quintile: ", chgpct)
     line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
             x = 'Year',
-            y = 'YOY change',
+            y = 'YOY change %',
             color='State Code',
             strokeDash='State Code'
     )
@@ -88,7 +88,7 @@ with col2:
 
     line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
             x = 'Year',
-            y = 'YOY change',
+            y = 'YOY change %',
             color='State Code',
             strokeDash='State Code'
     )
