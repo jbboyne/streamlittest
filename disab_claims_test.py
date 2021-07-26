@@ -22,14 +22,14 @@ df_disab_count = df_disab_count.drop(columns='Unnamed: 0')
 # changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, include_lowest=True, labels=["Lowest", "2", "3", "4", "Highest"]) 
 changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['State Code', 'Avg Monthly Change Per Year']]
 
-# #Create sidebar widgets
+#Create sidebar widgets
 
-# values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
-# default_ix = values.index("4")
-# chgpct = st.sidebar.selectbox(
-#     "Select 2020-2021 change rate quintile",
-#     values, index=default_ix
-# )
+values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
+default_ix = values.index("4")
+chgpct = st.sidebar.selectbox(
+    "Select 2020-2021 change rate quintile",
+    values, index=default_ix
+)
 
 # states = st.sidebar.multiselect(
 #     "Select States",
