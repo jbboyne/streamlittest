@@ -11,6 +11,7 @@ df_disab_count['MOM change'] = df_disab_count.groupby(['State Code'])['All SSDI'
 avg_rate_by_year = df_disab_count.groupby(['Year', 'State Code'])['MOM change'].mean()
 st.write(avg_rate_by_year.index)
 avg_rate_by_year.index = avg_rate_by_year.index.set_names(['Year', 'State Code'])
+st.write(avg_rate_by_year.index)
 avg_rate_by_year.merge(df_disab_count, how='right')
 # st.write(avg_rate_by_year)
 
