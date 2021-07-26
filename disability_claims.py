@@ -78,7 +78,7 @@ line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
         strokeDash='State Code'
 )
 
-st.altair_chart(line_chart_by_quintile)
+st.col1.altair_chart(line_chart_by_quintile)
 
 st.title("New disability claims by state, average monthly change per year")
 st.write("Choose different states with the widget in the left panel.")
