@@ -15,10 +15,6 @@ changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, 
 
 
 #Create sidebar widgets
-states = st.sidebar.multiselect(
-    "Select States",
-    df_disab_count['State Code'].unique()
-    )
 
 values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
 default_ix = values.index("4")
@@ -26,6 +22,11 @@ chgpct = st.sidebar.selectbox(
     "Select 2020-2021 change rate quintile",
     values, index=default_ix
 )
+
+states = st.sidebar.multiselect(
+    "Select States",
+    df_disab_count['State Code'].unique()
+    )
 
 # values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
 # default_ix = values.index("4")
