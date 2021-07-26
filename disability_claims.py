@@ -77,8 +77,8 @@ line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
         color='State Code',
         strokeDash='State Code'
 )
-
-st.col1.altair_chart(line_chart_by_quintile)
+with col1:
+    st.altair_chart(line_chart_by_quintile)
 
 st.title("New disability claims by state, average monthly change per year")
 st.write("Choose different states with the widget in the left panel.")
@@ -90,15 +90,16 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
         strokeDash='State Code'
 )
 
-st.altair_chart(line_chart_all_SSDI_claims)
+with col2:
+    st.altair_chart(line_chart_all_SSDI_claims)
 
-st.title("New disability claims by state, average monthly count per year")
+    st.title("New disability claims by state, average monthly count per year")
 
-line_chart_all_SSDI_claims_count = alt.Chart(df_subset).mark_line().encode(
-        x = 'Year',
-        y = 'Avg monthly SSDI claims',
-        color='State Code',
-        strokeDash='State Code'
-)
+    line_chart_all_SSDI_claims_count = alt.Chart(df_subset).mark_line().encode(
+            x = 'Year',
+            y = 'Avg monthly SSDI claims',
+            color='State Code',
+            strokeDash='State Code'
+    )
 
-st.altair_chart(line_chart_all_SSDI_claims_count)
+    st.altair_chart(line_chart_all_SSDI_claims_count)
