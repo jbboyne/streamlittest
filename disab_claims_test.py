@@ -6,8 +6,8 @@ import altair as alt
 df_disab_count = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSTMpMSdP4qQl0yYntV-_X33w1J0AhoKHM_O4PMaBC7-RKeLJlH_lSOu7mvJm_seKU4hTsf-eBBB5pY/pub?gid=1080384046&single=true&output=csv")
 df_disab_count = df_disab_count[~df_disab_count['State Code'].isin(['FE', 'GU', 'EA', 'EO', 'EM', 'EV'])]
 df_disab_count['Year'] = df_disab_count['Year'].astype(str)
-
 df_disab_count['MOM change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
+
 avg_rate_by_year = df_disab_count.groupby(['Year', 'State Code'])['MOM change'].mean().to_frame()
 avg_rate_by_year.index = avg_rate_by_year.index.set_names(['Year', 'State Code'])
 df_disab_count = avg_rate_by_year.merge(df_disab_count, how='right', on=['Year', 'State Code'])
