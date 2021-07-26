@@ -22,6 +22,8 @@ changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['Ye
 changerates = changerates.groupby(['State Code']).mean()
 changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
+st.write(changerates)
+# changerates['bin'] = pd.cut(changerates[
 
 #Create sidebar widgets
 
@@ -41,12 +43,10 @@ if chgpct == []:
     chgpct == '4'
 
 state_selection = changerates[changerates['Avg Monthly Change Per Year'] == chgpct]['State Code'].unique()
-st.write(changerates)
-st.write(state_selection)
 df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
-# if states == []:
-#         states = state_selection
+if states == []:
+        states = state_selection
         
 # df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
