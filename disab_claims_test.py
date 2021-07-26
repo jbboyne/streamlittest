@@ -9,7 +9,7 @@ df_disab_count = df_disab_count[~df_disab_count['State Code'].isin(['FE', 'GU', 
 # # df_disab_count['Year'] = df_disab_count['Year'].astype(str)
 df_disab_count['MOM change'] = df_disab_count.groupby(['State Code'])['All SSDI'].pct_change(1) * 100
 
-# df_disab_count['recent%'] =df_disab_count.groupby('State Code')['MOM change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
+df_disab_count['recent%'] =df_disab_count.groupby('State Code')['MOM change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 # changerates = df_disab_count[df_disab_count['Year'] == '2021'][['State Code', 'recent%']]
 # changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, include_lowest=True, labels=["Lowest", "2", "3", "4", "Highest"]) 
 
