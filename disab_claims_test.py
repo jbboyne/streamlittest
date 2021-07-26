@@ -44,10 +44,10 @@ if chgpct == []:
 state_selection = changerates[changerates['bin'] == chgpct]['State Code'].unique()
 df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
-# if states == []:
-#         states = state_selection
+if states == []:
+        states = state_selection
         
-# df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
+df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
 # st.title("New disability claims by state, Year over Year Change")
 # st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
