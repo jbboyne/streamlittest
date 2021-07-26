@@ -20,14 +20,16 @@ states = st.sidebar.multiselect(
     df_disab_count['State Code'].unique()
     )
 
-chgpct = st.sidebar.selectbox(
-    "Select recent change range quintile",
-    ["Lowest", "2", "3", "4", "Highest"]
-)
-
 values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
 default_ix = values.index("4")
-window_ANTICOR = st.sidebar.selectbox('Window ANTICOR', values, index=default_ix)
+chgpct = st.sidebar.selectbox(
+    "Select recent change range quintile",
+    values, index=default_ix
+)
+
+# values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
+# default_ix = values.index("4")
+# window_ANTICOR = st.sidebar.selectbox('Window ANTICOR', values, index=default_ix)
 
 if chgpct == []:
     chgpct == '4'
