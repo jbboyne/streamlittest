@@ -10,9 +10,9 @@ df_disab_count['MOM change'] = df_disab_count.groupby(['State Code'])['All SSDI'
 
 avg_rate_by_year = df_disab_count.groupby(['Year', 'State Code'])['MOM change'].mean().to_frame()
 avg_rate_by_year.index = avg_rate_by_year.index.set_names(['Year', 'State Code'])
+
 df_disab_count = avg_rate_by_year.merge(df_disab_count, how='right', on=['Year', 'State Code'])
 df_disab_count = df_disab_count.rename(columns={'MOM change_x': 'Avg Monthly Change Per Year'})
-
 df_disab_count = df_disab_count.groupby(['Year', 'State Code']).mean()
 df_disab_count.index = df_disab_count.index.set_names(['Year', 'State Code'])
 df_disab_count.reset_index(inplace=True)
@@ -43,7 +43,7 @@ if chgpct == []:
 state_selection = changerates[changerates['Avg Monthly Change Per Year'] == chgpct]['State Code'].unique()
 st.write(changerates)
 st.write(state_selection)
-# df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
+df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
 # if states == []:
 #         states = state_selection
