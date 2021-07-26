@@ -23,16 +23,15 @@ changerates = changerates.groupby(['State Code']).mean()
 changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
 changerates['bin'] = pd.cut(changerates['Avg Monthly Change Per Year'], 5, labels=["Lowest", "2", "3", "4", "Highest"])
-st.write(changerates)
 
-# #Create sidebar widgets
+#Create sidebar widgets
 
-# values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
-# default_ix = values.index("4")
-# chgpct = st.sidebar.selectbox(
-#     "Select 2020-2021 change rate quintile",
-#     values, index=default_ix
-# )
+values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
+default_ix = values.index("4")
+chgpct = st.sidebar.selectbox(
+    "Select 2020-2021 change rate quintile",
+    values, index=default_ix
+)
 
 # states = st.sidebar.multiselect(
 #     "Select States",
