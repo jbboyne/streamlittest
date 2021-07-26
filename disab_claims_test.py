@@ -51,7 +51,6 @@ else:
         
 df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
-st.write(df_subset2)
 st.title("New disability claims by state, Year over Year Change")
 st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
 st.write("Quintile: ", chgpct)
