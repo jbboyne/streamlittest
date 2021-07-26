@@ -33,16 +33,16 @@ chgpct = st.sidebar.selectbox(
     values, index=default_ix
 )
 
-# states = st.sidebar.multiselect(
-#     "Select States",
-#     df_disab_count['State Code'].unique()
-#     )
+states = st.sidebar.multiselect(
+    "Select States",
+    df_disab_count['State Code'].unique()
+    )
 
-# if chgpct == []:
-#     chgpct == '4'
+if chgpct == []:
+    chgpct == '4'
 
-# state_selection = changerates[changerates['bin'] == chgpct]['State Code'].unique()
-# df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
+state_selection = changerates[changerates['bin'] == chgpct]['State Code'].unique()
+df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
 # if states == []:
 #         states = state_selection
