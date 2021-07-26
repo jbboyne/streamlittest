@@ -23,30 +23,30 @@ changerates = changerates.groupby(['State Code']).mean()
 changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
 st.write(changerates)
-# changerates['bin'] = pd.cut(changerates[
+changerates['bin'] = pd.cut(changerates['Avg Monthly Change Per Year'], 5, labels=["Lowest", "2", "3", "4", "Highest"])
 
-#Create sidebar widgets
+# #Create sidebar widgets
 
-values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
-default_ix = values.index("4")
-chgpct = st.sidebar.selectbox(
-    "Select 2020-2021 change rate quintile",
-    values, index=default_ix
-)
+# values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
+# default_ix = values.index("4")
+# chgpct = st.sidebar.selectbox(
+#     "Select 2020-2021 change rate quintile",
+#     values, index=default_ix
+# )
 
-states = st.sidebar.multiselect(
-    "Select States",
-    df_disab_count['State Code'].unique()
-    )
+# states = st.sidebar.multiselect(
+#     "Select States",
+#     df_disab_count['State Code'].unique()
+#     )
 
-if chgpct == []:
-    chgpct == '4'
+# if chgpct == []:
+#     chgpct == '4'
 
-state_selection = changerates[changerates['Avg Monthly Change Per Year'] == chgpct]['State Code'].unique()
-df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
+# state_selection = changerates[changerates['bin'] == chgpct]['State Code'].unique()
+# df_subset2 = df_disab_count.loc[lambda d: d['State Code'].isin(state_selection)]
 
-if states == []:
-        states = state_selection
+# if states == []:
+#         states = state_selection
         
 # df_subset = df_disab_count.loc[lambda d: d['State Code'].isin(states)]
 
