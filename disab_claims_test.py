@@ -15,6 +15,7 @@ df_disab_count = df_disab_count.rename(columns={'MOM change_x': 'Avg Monthly Cha
 df_disab_count = df_disab_count.groupby(['Year', 'State Code']).mean()
 df_disab_count.index = df_disab_count.index.set_names(['Year', 'State Code'])
 st.write(df_disab_count)
+df_disab_count = df_disab_count.to_frame()
 df_disab_count = df_disab_count.reset_index(inplace=True)
 st.write(df_disab_count)
 
