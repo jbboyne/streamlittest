@@ -88,3 +88,14 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
 )
 
 st.altair_chart(line_chart_all_SSDI_claims)
+
+st.title("New disability claims by state, average monthly count per year")
+
+line_chart_all_SSDI_claims_count = alt.Chart(df_subset).mark_line().encode(
+        x = 'Year',
+        y = 'Avg monthly SSDI claims',
+        color='State Code',
+        strokeDash='State Code'
+)
+
+st.altair_chart(line_chart_all_SSDI_claims_count)
