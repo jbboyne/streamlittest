@@ -11,7 +11,7 @@ df_disab_count['MOM change'] = df_disab_count.groupby(['State Code'])['All SSDI'
 avg_rate_by_year = df_disab_count.groupby(['Year', 'State Code'])['MOM change'].mean()
 avg_rate_by_year.reset_index(drop=True, inplace=True)
 
-# st.write(avg_rate_by_year)
+st.write(avg_rate_by_year)
 
 # df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 # changerates = avg_rate_by_year[(avg_rate_by_year['Year'] == '2020') or (avg_rate_by_year['Year'] == '2021')][['State Code', 'recent%']]
