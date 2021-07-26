@@ -22,8 +22,9 @@ changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['Ye
 changerates = changerates.groupby(['State Code']).mean()
 changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
-changerates['bin'] = pd.cut(changerates['Avg Monthly Change Per Year'], 5, labels=["Lowest", "2", "3", "4", "Highest"])
-st.write(changerates)
+# changerates['bin'] = 
+pd.cut(changerates['Avg Monthly Change Per Year'], 5, labels=["Lowest", "2", "3", "4", "Highest"])
+# st.write(changerates)
 
 # #Create sidebar widgets
 
