@@ -13,7 +13,7 @@ df_disab_count = avg_rate_by_year.merge(df_disab_count, how='right', on=['Year',
 df_disab_count = df_disab_count.rename({'MOM change_x': 'Avg Monthly Change Per Year'})
 st.write(df_disab_count)
 
-# df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
+df_disab_count['recent%'] =df_disab_count.groupby('State Code')['Avg Monthly Change Per Year'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 # changerates = avg_rate_by_year[(avg_rate_by_year['Year'] == '2020') or (avg_rate_by_year['Year'] == '2021')][['State Code', 'recent%']]
 # changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, include_lowest=True, labels=["Lowest", "2", "3", "4", "Highest"]) 
 
