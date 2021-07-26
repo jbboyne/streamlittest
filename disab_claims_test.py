@@ -19,8 +19,8 @@ df_disab_count.reset_index(inplace=True)
 df_disab_count = df_disab_count.drop(columns='Unnamed: 0')
 
 changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['Year', 'State Code', 'Avg Monthly Change Per Year']]
-changerates = changerates.groupby(['Year', 'State Code']).mean()
-changerates.index = changerates.index.set_names(['Year', 'State Code'])
+changerates = changerates.groupby(['State Code']).mean()
+changerates.index = changerates.index.set_names(['State Code'])
 changerates.reset_index(inplace=True)
 
 #Create sidebar widgets
