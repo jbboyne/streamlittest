@@ -23,7 +23,7 @@ states = st.sidebar.multiselect(
 values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
 default_ix = values.index("4")
 chgpct = st.sidebar.selectbox(
-    "Select recent change range quintile",
+    "Select 2020-2021 change rate quintile",
     values, index=default_ix
 )
 
