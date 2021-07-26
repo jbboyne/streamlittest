@@ -18,9 +18,9 @@ df_disab_count.index = df_disab_count.index.set_names(['Year', 'State Code'])
 df_disab_count.reset_index(inplace=True)
 df_disab_count = df_disab_count.drop(columns='Unnamed: 0')
 
-# df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['State Code', 'Avg Monthly Change Per Year']]
+# df_disab_count['recent%'] =df_disab_count.groupby('State Code')['YOY change'].transform(lambda s: s.rolling(2, min_periods=1).mean())
 # changerates['recent%bin'] = pd.cut(changerates['recent%'], bins=5, precision=0, include_lowest=True, labels=["Lowest", "2", "3", "4", "Highest"]) 
-
+changerates = df_disab_count[df_disab_count['Year'].isin(['2020', '2021'])][['State Code', 'Avg Monthly Change Per Year']]
 
 # #Create sidebar widgets
 
