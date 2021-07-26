@@ -88,4 +88,3 @@ line_chart_all_SSDI_claims = alt.Chart(df_subset).mark_line().encode(
 )
 
 st.altair_chart(line_chart_all_SSDI_claims)
-© 2021 GitHub, Inc.
