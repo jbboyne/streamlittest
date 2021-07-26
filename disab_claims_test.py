@@ -43,8 +43,8 @@ st.title("New disability claims by state, Month over Month Change")
 st.write("Select quintile of average 2020-2021 change with the widget in the left panel.")
 st.write("Quintile: ", chgpct)
 line_chart_by_quintile = alt.Chart(df_subset2).mark_line().encode(
-        x = 'Month',
-        y = 'YOY change',
+        x = 'Year-Month',
+        y = 'MOM change',
         color='State Code',
         strokeDash='State Code'
 )
