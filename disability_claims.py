@@ -3,6 +3,9 @@ import pandas as pd
 import locale
 import altair as alt
 
+st.beta_set_page_config(layout="wide")
+col1, col2 = st.beta_columns(2)
+
 # Read in subset of SSDI data at "https://www.ssa.gov/disability/data/SSA-SA-MOWL.csv"
 # Processed in file disability_pickle.py and manually uploaded to and published on Gdrive
 
