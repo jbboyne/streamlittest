@@ -23,10 +23,10 @@ chgpct = st.sidebar.selectbox(
     values, index=default_ix
 )
 
-# states = st.sidebar.multiselect(
-#     "Select States",
-#     df_disab_count['State Code'].unique()
-#     )
+states = st.sidebar.multiselect(
+    "Select States",
+    df_disab_count['State Code'].unique()
+    )
 
 # # values = ['<select>', "Lowest", "2", "3", "4", "Highest"]
 # # default_ix = values.index("4")
